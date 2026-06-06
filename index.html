@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Just One Question 😌</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Question for You 😌</title>
 
     <style>
         body {
@@ -12,7 +12,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: #ffe6f0;
+            background: #ffe6eb;
             font-family: Arial, sans-serif;
             overflow: hidden;
         }
@@ -27,9 +27,9 @@
         }
 
         .buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
+            position: relative;
+            width: 400px;
+            height: 200px;
         }
 
         button {
@@ -38,51 +38,67 @@
             border: none;
             border-radius: 12px;
             cursor: pointer;
+            transition: 0.2s;
         }
 
         #yesBtn {
             background: #4CAF50;
             color: white;
-            position: fixed;
+            position: absolute;
+            left: 40px;
+            top: 0;
         }
 
         #noBtn {
             background: #ff4d4d;
             color: white;
+            position: absolute;
+            left: 240px;
+            top: 0;
         }
     </style>
 </head>
-
 <body>
 
     <div class="container">
-        <h1>Navya .... Do you think you look beautiful? ✨</h1>
+        <h1>Navya ... Do you think you look beautiful? ✨</h1>
 
         <div class="buttons">
             <button id="yesBtn">Yes 😌</button>
-            <button id="noBtn">No 🙃</button>
+            <button id="noBtn">No 😏</button>
         </div>
     </div>
 
     <script>
-        const noBtn = document.getElementById("noBtn");
+        const yesBtn = document.getElementById("yesBtn");
 
-        noBtn.addEventListener("mouseover", () => {
-            const maxX = window.innerWidth - noBtn.offsetWidth;
-            const maxY = window.innerHeight - noBtn.offsetHeight;
+        function moveButton() {
+            const maxX = window.innerWidth - yesBtn.offsetWidth;
+            const maxY = window.innerHeight - yesBtn.offsetHeight;
 
             const randomX = Math.floor(Math.random() * maxX);
             const randomY = Math.floor(Math.random() * maxY);
 
-            noBtn.style.left = randomX + "px";
-            noBtn.style.top = randomY + "px";
-            noBtn.style.position = "fixed";
+            yesBtn.style.left = randomX + "px";
+            yesBtn.style.top = randomY + "px";
+            yesBtn.style.position = "fixed";
+        }
+
+        // 🖥️ Laptop hover
+        yesBtn.addEventListener("mouseover", moveButton);
+
+        // 📱 Mobile touch
+        yesBtn.addEventListener("touchstart", (e) => {
+            e.preventDefault();
+            moveButton();
         });
 
-    alert("I knew it  😏 you're not beautiful 😂");
-});
+        // NO button click
+        document.getElementById("noBtn")
+        .addEventListener("click", () => {
+            alert("I knew it  😏 you're not beautiful 😂");
+        });
     </script>
 
 </body>
-
 </html>
