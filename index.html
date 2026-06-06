@@ -65,28 +65,24 @@
     </div>
 
     <script>
-        const yesBtn = document.getElementById("yesBtn");
+        const noBtn = document.getElementById("noBtn");
 
-        // YES button follows cursor
-        document.addEventListener("mousemove", (e) => {
-            yesBtn.style.left = (e.clientX + 15) + "px";
-            yesBtn.style.top = (e.clientY + 15) + "px";
+        noBtn.addEventListener("mouseover", () => {
+            const maxX = window.innerWidth - noBtn.offsetWidth;
+            const maxY = window.innerHeight - noBtn.offsetHeight;
+
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+
+            noBtn.style.left = randomX + "px";
+            noBtn.style.top = randomY + "px";
+            noBtn.style.position = "fixed";
         });
 
-        // Mobile touch follow
-        document.addEventListener("touchmove", (e) => {
-            const touch = e.touches[0];
-
-            yesBtn.style.left = (touch.clientX + 15) + "px";
-            yesBtn.style.top = (touch.clientY + 15) + "px";
-        });
-
-        // NO button clicked
-        document.getElementById("noBtn")
-        .addEventListener("click", () => {
-            alert("I knew it  😏 you're not beautiful 😂");
-        });
+    alert("I knew it  😏 you're not beautiful 😂");
+});
     </script>
 
 </body>
+
 </html>
